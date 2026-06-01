@@ -1,0 +1,24 @@
+.sidebar { background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.section { padding: var(--sp3); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.entitySection { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.label { font: 500 10px var(--mono); letter-spacing: 1.2px; text-transform: uppercase; color: var(--text3); margin-bottom: var(--sp2); }
+.row { display: flex; align-items: center; gap: var(--sp2); padding: 5px var(--sp2); border-radius: var(--r1); cursor: pointer; transition: background var(--t1); }
+.row:hover { background: var(--bg4); }
+.row.active { background: var(--accentbg); }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.rowLabel { font: 400 12px var(--font); color: var(--text2); flex: 1; }
+.rowLabel.activeLabel { color: var(--accent); }
+.code { font: 400 10px var(--mono); color: var(--text3); }
+.clearAll { background: none; border: none; color: var(--text3); font: 400 10px var(--font); padding: 4px var(--sp2); cursor: pointer; text-decoration: underline; margin-top: 2px; transition: color var(--t1); }
+.clearAll:hover { color: var(--red); }
+.dateRow { display: flex; align-items: center; gap: var(--sp1); }
+.dateInput { background: var(--bg4); border: 1px solid var(--border); color: var(--text2); font: 400 10px var(--mono); padding: 4px var(--sp2); border-radius: var(--r1); width: 0; flex: 1; outline: none; transition: border var(--t1); color-scheme: dark; }
+.dateInput:focus { border-color: var(--accent); }
+.dateSep { font: 400 10px var(--mono); color: var(--text3); }
+.entityScroll { overflow-y: auto; flex: 1; }
+.noEntities { font: 400 11px var(--font); color: var(--text3); padding: var(--sp2); line-height: 1.6; }
+.entityRow { display: flex; align-items: center; gap: var(--sp2); padding: 5px var(--sp2); border-radius: var(--r1); cursor: pointer; transition: background var(--t1); }
+.entityRow:hover { background: var(--bg4); }
+.avatar { width: 24px; height: 24px; border-radius: var(--r1); display: flex; align-items: center; justify-content: center; font: 500 9px var(--mono); flex-shrink: 0; }
+.entityName { font: 400 11px var(--font); color: var(--text2); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.entityCount { font: 400 10px var(--mono); color: var(--text3); }

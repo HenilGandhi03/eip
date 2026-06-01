@@ -1,0 +1,28 @@
+.panel { background: var(--bg2); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+.header { padding: var(--sp3); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.catBadge { display: inline-block; font: 500 9px var(--mono); letter-spacing: 1px; text-transform: uppercase; padding: 2px 6px; border-radius: var(--r1); margin-bottom: var(--sp1); }
+.headerTitle { font: 500 13px var(--font); color: var(--text); line-height: 1.35; margin-bottom: 3px; }
+.headerSub { font: 400 11px var(--font); color: var(--text3); }
+.headerMeta { display: flex; gap: var(--sp1); font: 400 11px var(--font); color: var(--text3); flex-wrap: wrap; }
+.scroll { overflow-y: auto; flex: 1; }
+.section { padding: var(--sp3); border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.summary { font: 400 12px var(--font); color: var(--text2); line-height: 1.6; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp1); }
+.metric { background: var(--bg4); border-radius: var(--r1); padding: 6px var(--sp2); text-align: center; }
+.metricVal { font: 500 14px var(--mono); color: var(--text); margin-bottom: 2px; }
+.metricKey { font: 400 9px var(--font); color: var(--text3); text-transform: uppercase; letter-spacing: .5px; }
+.confRow { display: flex; align-items: center; gap: var(--sp2); margin-bottom: 4px; }
+.confNote { font: 400 10px var(--font); color: var(--text3); }
+.sourceLink { display: flex; align-items: center; gap: var(--sp1); font: 400 11px var(--font); color: var(--accent2); transition: color var(--t1); text-decoration: none; }
+.sourceLink:hover { color: var(--accent); }
+.sourceDomain { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gdeltTag { font: 400 9px var(--mono); color: var(--text3); background: var(--bg4); padding: 1px 5px; border-radius: var(--r1); flex-shrink: 0; }
+.noRel { font: 400 11px var(--font); color: var(--text3); }
+.relCard { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--r2); padding: var(--sp2) var(--sp3); margin-bottom: var(--sp2); cursor: pointer; transition: all var(--t2); }
+.relCard:hover { background: var(--bg4); border-color: var(--border2); }
+.relTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+.relType { font: 500 9px var(--mono); letter-spacing: .5px; text-transform: uppercase; color: var(--text3); }
+.relConf { font: 500 10px var(--mono); }
+.relTitle { font: 400 12px var(--font); color: var(--text2); line-height: 1.4; margin-bottom: 3px; }
+.relMeta { display: flex; gap: var(--sp1); font: 400 10px var(--mono); color: var(--text3); margin-bottom: var(--sp1); }

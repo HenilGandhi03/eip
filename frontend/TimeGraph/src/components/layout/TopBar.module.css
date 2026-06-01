@@ -1,0 +1,21 @@
+.bar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 16px; background: var(--bg2);
+  border-bottom: 1px solid var(--border); height: 44px; flex-shrink: 0;
+}
+.logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; }
+.logo span { color: var(--text3); }
+.nav { display: flex; gap: 2px; }
+.navBtn { background: none; border: none; color: var(--text2); font: 500 11px var(--font); padding: 5px 10px; border-radius: var(--r1); text-transform: uppercase; letter-spacing: .5px; transition: all var(--t1); }
+.navBtn:hover { color: var(--text); background: var(--bg4); }
+.navBtn.active { color: var(--accent); background: var(--accentbg); }
+.right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.searchWrap { position: relative; }
+.searchInput { background: var(--bg4); border: 1px solid var(--border); color: var(--text); font: 400 12px var(--font); padding: 5px 28px; border-radius: var(--r1); width: 240px; outline: none; transition: border var(--t2); }
+.searchInput:focus { border-color: var(--accent); }
+.searchInput::placeholder { color: var(--text3); }
+.searchIcon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 15px; pointer-events: none; }
+.clearBtn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text3); font-size: 10px; padding: 2px 4px; transition: color var(--t1); }
+.clearBtn:hover { color: var(--text2); }
+.statusDot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); flex-shrink: 0; }
+.statusLabel { font: 400 10px var(--mono); color: var(--green); letter-spacing: 1px; }

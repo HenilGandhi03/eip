@@ -1,0 +1,169 @@
+.wrap {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* List panel */
+.listPanel {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.listHeader {
+  padding: var(--sp3);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.search {
+  width: 100%;
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: 400 12px var(--font);
+  padding: 5px var(--sp2);
+  border-radius: var(--r1);
+  outline: none;
+  margin-bottom: var(--sp2);
+  transition: border var(--t1);
+}
+.search:focus { border-color: var(--accent); }
+.search::placeholder { color: var(--text3); }
+
+.typeFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.typeBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  font: 400 10px var(--font);
+  padding: 2px 7px;
+  border-radius: var(--r1);
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all var(--t1);
+}
+.typeBtn:hover { border-color: var(--border2); color: var(--text2); }
+.typeBtn.activeType { border-color: currentColor; background: var(--accentbg); color: var(--accent); }
+
+.list { overflow-y: auto; flex: 1; }
+
+.entityRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp2);
+  padding: var(--sp2) var(--sp3);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--t1);
+}
+.entityRow:hover { background: var(--bg4); }
+.entityRow.active { background: var(--accentbg); }
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 11px var(--mono);
+  flex-shrink: 0;
+}
+
+.entityInfo { flex: 1; min-width: 0; }
+.entityName {
+  font: 500 12px var(--font);
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.entityMeta {
+  display: flex;
+  gap: var(--sp1);
+  font: 400 10px var(--font);
+  color: var(--text3);
+  margin-top: 1px;
+}
+
+/* Detail */
+.detail { overflow-y: auto; }
+.detailInner { padding: var(--sp4); }
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sp3);
+  margin-bottom: var(--sp4);
+}
+.bigAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 16px var(--mono);
+  flex-shrink: 0;
+}
+.detailName  { font: 600 16px var(--font); color: var(--text); }
+.detailType  { font: 400 12px var(--font); text-transform: capitalize; margin-top: 1px; }
+.detailFreq  { font: 400 11px var(--font); color: var(--text3); margin-top: 2px; }
+
+.detailSection { margin-bottom: var(--sp4); }
+
+.aliases { display: flex; gap: var(--sp1); flex-wrap: wrap; }
+
+/* Events list */
+.eventRow {
+  display: flex;
+  gap: var(--sp2);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: color var(--t1);
+}
+.eventRow:hover .evTitle { color: var(--accent2); }
+.evDate  { font: 400 10px var(--mono); color: var(--text3); flex-shrink: 0; width: 80px; }
+.evTitle { font: 400 12px var(--font); color: var(--text2); }
+
+/* Relationship rows */
+.noRel { font: 400 11px var(--font); color: var(--text3); }
+.relRow {
+  display: flex;
+  gap: var(--sp2);
+  margin-bottom: var(--sp3);
+  padding-bottom: var(--sp3);
+  border-bottom: 1px solid var(--border);
+}
+.relRow:last-child { border-bottom: none; }
+.relAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 10px var(--mono);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.relInfo { flex: 1; }
+.relName  { font: 500 12px var(--font); color: var(--text); margin-bottom: 2px; }
+.relTypeLine { display: flex; align-items: center; gap: var(--sp1); margin-bottom: var(--sp1); }
+.relTypeTag {
+  font: 500 9px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text3);
+}
+.relEv   { font: 400 10px var(--mono); color: var(--text3); }
+.relConf { font: 500 10px var(--mono); }

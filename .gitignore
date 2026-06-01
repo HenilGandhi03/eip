@@ -1,2 +1,7 @@
 .history
 backend/.venv
+backend/app/api/__pycache__/
+backend/app/core/__pycache__/
+backend/app/__pycache__/
+backend/app/services/__pycache__/
+backend/data/

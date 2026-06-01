@@ -1,0 +1,155 @@
+.wrap { height: 100%; overflow-y: auto; padding: var(--sp4); background: var(--bg); }
+.inner { max-width: 760px; margin: 0 auto; }
+
+.heading { font: 600 18px var(--font); color: var(--text); margin-bottom: var(--sp2); }
+.sub { font: 400 12px var(--font); color: var(--text2); line-height: 1.6; margin-bottom: var(--sp4); }
+.sub a { color: var(--accent2); }
+
+/* Stats grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp2);
+  margin-bottom: var(--sp4);
+}
+.statCard {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: var(--sp3) var(--sp3);
+  text-align: center;
+}
+.statVal { font: 500 18px var(--mono); color: var(--text); margin-bottom: 4px; }
+.statKey { font: 400 10px var(--font); color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* Cards */
+.card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: var(--sp4);
+  margin-bottom: var(--sp3);
+}
+.cardTitle { font: 500 13px var(--font); color: var(--text); margin-bottom: var(--sp2); }
+.cardTitleRow { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--sp3); }
+.cardDesc { font: 400 12px var(--font); color: var(--text2); line-height: 1.6; margin-bottom: var(--sp3); }
+
+.row { display: flex; align-items: center; gap: var(--sp2); }
+.fieldLabel { font: 400 11px var(--font); color: var(--text2); white-space: nowrap; }
+
+.numInput {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: 400 13px var(--mono);
+  padding: 5px 10px;
+  border-radius: var(--r1);
+  width: 80px;
+  outline: none;
+}
+.numInput:focus { border-color: var(--accent); }
+
+.dateInput {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font: 400 12px var(--mono);
+  padding: 5px 10px;
+  border-radius: var(--r1);
+  outline: none;
+}
+.dateInput:focus { border-color: var(--accent); }
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: var(--sp1);
+  background: var(--accent2);
+  border: none;
+  color: #fff;
+  font: 500 12px var(--font);
+  padding: 6px 16px;
+  border-radius: var(--r1);
+  cursor: pointer;
+  transition: background var(--t1);
+}
+.btn:hover:not(:disabled) { background: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.message {
+  padding: var(--sp2) var(--sp3);
+  border-radius: var(--r1);
+  font: 400 12px var(--font);
+  margin-bottom: var(--sp3);
+}
+.msgOk  { background: var(--greenbg); color: var(--green); border: 1px solid rgba(0,201,141,0.3); }
+.msgErr { background: var(--redbg);   color: var(--red);   border: 1px solid rgba(255,71,87,0.3); }
+
+/* Log table */
+.refreshBtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  font: 400 11px var(--font);
+  padding: 3px 8px;
+  border-radius: var(--r1);
+  cursor: pointer;
+  transition: all var(--t1);
+}
+.refreshBtn:hover { color: var(--text2); border-color: var(--border2); }
+
+.noLog { font: 400 11px var(--font); color: var(--text3); }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font: 400 11px var(--font);
+}
+.table th {
+  font: 500 9px var(--mono);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text3);
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.table td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: middle;
+}
+.table tr:last-child td { border-bottom: none; }
+.mono { font-family: var(--mono); font-size: 11px; }
+.errorCell { font-size: 10px; color: var(--red); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Notes */
+.notesList {
+  list-style: none;
+  padding: 0;
+}
+.notesList li {
+  font: 400 12px var(--font);
+  color: var(--text2);
+  line-height: 1.6;
+  padding: 3px 0;
+  padding-left: var(--sp3);
+  position: relative;
+}
+.notesList li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--text3);
+  font-size: 10px;
+}
+.notesList strong { color: var(--text); }
+.notesList code {
+  font-family: var(--mono);
+  font-size: 10px;
+  background: var(--bg4);
+  padding: 1px 5px;
+  border-radius: var(--r1);
+  color: var(--accent);
+}
