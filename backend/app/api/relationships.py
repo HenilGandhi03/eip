@@ -6,18 +6,17 @@ router = APIRouter()
 
 @router.get("/graph")
 def get_relationship_graph(
-    limit_nodes: int = Query(50, le=200),
-    limit_edges: int = Query(100, le=500),
+    limit_nodes:    int   = Query(60,  le=200),
+    limit_edges:    int   = Query(150, le=600),
     min_confidence: float = Query(0.4, ge=0.0, le=1.0),
 ):
     """
-    Graph data for visualization.
-    Returns nodes (entities/events) and edges (observable relationships).
-    All edges include explainability metadata.
+    Graph payload for D3/Cytoscape visualization.
+    Nodes = entities. Edges = weighted observable co-occurrence.
+    Every edge carries a full signal breakdown for transparency.
     """
     conn = get_conn()
 
-    # Top entities by frequency
     entity_rows = conn.execute("""
         SELECT id, canonical_name, entity_type, frequency
         FROM entities
@@ -25,18 +24,42 @@ def get_relationship_graph(
         LIMIT ?
     """, [limit_nodes]).fetchall()
 
+    if not entity_rows:
+        return {
+            "nodes": [],
+            "edges": [],
+            "metadata": {
+                "min_confidence": min_confidence,
+                "total_nodes": 0,
+                "total_edges": 0,
+                "note": "No entities yet. POST /api/ingest/seed to load sample data.",
+            },
+        }
+
     nodes = [
-        {"id": r[0], "label": r[1], "type": r[2], "weight": r[3], "node_type": "entity"}
+        {
+            "id":     r[0],
+            "label":  r[1],
+            "type":   r[2] or "unknown",
+            "weight": r[3] or 0,
+        }
         for r in entity_rows
     ]
-    entity_ids = {r[0] for r in entity_rows}
 
-    # Relationships between those entities
+    entity_ids   = [r[0] for r in entity_rows]
+    placeholders = ", ".join("?" for _ in entity_ids)
+
     rel_rows = conn.execute(f"""
-        SELECT entity_a, entity_b, rel_type, evidence_count, confidence, explanation
+        SELECT
+            entity_a, entity_b,
+            rel_type,
+            evidence_count,
+            co_mention_count,
+            confidence,
+            explanation
         FROM relationships
-        WHERE entity_a IN ({','.join('?' for _ in entity_ids)})
-          AND entity_b IN ({','.join('?' for _ in entity_ids)})
+        WHERE entity_a IN ({placeholders})
+          AND entity_b IN ({placeholders})
           AND confidence >= ?
         ORDER BY confidence DESC
         LIMIT ?
@@ -44,15 +67,15 @@ def get_relationship_graph(
 
     edges = [
         {
-            "source": r[0],
-            "target": r[1],
-            "type": r[2],
-            "evidence": r[3],
-            "confidence": r[4],
-            "explanation": r[5],
-            # Transparency: always separate facts from correlations
-            "is_causal": False,
-            "is_speculative": False,
+            "source":          r[0],
+            "target":          r[1],
+            "type":            r[2],
+            "evidence":        r[3],
+            "co_mention_count": r[4],
+            "confidence":      round(r[5], 3) if r[5] else 0,
+            "explanation":     r[6],
+            "is_causal":       False,
+            "is_speculative":  False,
         }
         for r in rel_rows
     ]
@@ -62,6 +85,13 @@ def get_relationship_graph(
         "edges": edges,
         "metadata": {
             "min_confidence": min_confidence,
-            "note": "Edges represent observable co-occurrence patterns. No causal relationships are implied.",
-        }
+            "total_nodes":    len(nodes),
+            "total_edges":    len(edges),
+            "note": (
+                "Edges are observable co-occurrence signals only. "
+                "Confidence is a weighted composite (location + country + category + "
+                "temporal proximity + mention volume). "
+                "No causal relationships are implied."
+            ),
+        },
     }

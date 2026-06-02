@@ -3,33 +3,35 @@ from typing import List
 
 
 class Settings(BaseSettings):
-    # Server
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     DEBUG: bool = False
 
-    # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+    ]
 
-    # Database — uses DuckDB for MVP (swap to PostgreSQL for production)
+    # DuckDB for MVP — swap DATABASE_URL to postgresql+asyncpg://... for prod
     DATABASE_URL: str = "data/processed/eip.duckdb"
 
-    # GDELT
-    GDELT_BASE_URL: str = "http://data.gdeltproject.org/events"
+    # GDELT source URLs
+    GDELT_BASE_URL: str     = "http://data.gdeltproject.org/events"
     GDELT_GKG_BASE_URL: str = "http://data.gdeltproject.org/gkg"
-    GDELT_INDEX_URL: str = "http://data.gdeltproject.org/events/index.html"
-    DATA_RAW_DIR: str = "data/raw"
+    GDELT_INDEX_URL: str    = "http://data.gdeltproject.org/events/index.html"
+    DATA_RAW_DIR: str       = "data/raw"
     DATA_PROCESSED_DIR: str = "data/processed"
 
-    # Processing
-    BATCH_SIZE: int = 10_000
-    MAX_EVENTS_PER_DAY: int = 50_000
+    # Processing limits
+    BATCH_SIZE: int         = 5_000
+    MAX_EVENTS_PER_DAY: int = 100_000
 
-    # AI (optional — for summarization / entity extraction)
-    ANTHROPIC_API_KEY: str = ""
+    # Optional AI (Claude) for summarization only — never for causal inference
+    ANTHROPIC_API_KEY: str  = ""
 
-    # Focus regions for MVP (CAMEO country codes)
-    FOCUS_COUNTRIES: List[str] = ["IND"]  # India focus for MVP
+    # CAMEO 3-letter country codes to focus on
+    # IND = India.  Add more: ["IND", "PAK", "CHN", "USA"]
+    FOCUS_COUNTRIES: List[str] = ["IND"]
 
     class Config:
         env_file = ".env"

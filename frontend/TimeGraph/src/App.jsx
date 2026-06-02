@@ -6,6 +6,8 @@ import Timeline from './components/timeline/Timeline'
 import GraphView from './components/graph/GraphView'
 import EntitiesView from './components/entities/EntitiesView'
 import IngestView from './components/layout/IngestView'
+import './styles/tokens.css'
+import './styles/globals.css'
 
 export default function App() {
   const { activeView } = useStore()
